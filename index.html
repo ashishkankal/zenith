@@ -1,0 +1,426 @@
+<html>
+	
+<!-- Mirrored from gcoea.ac.in/zenith/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 19 Feb 2016 08:46:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+		<!--MTA INCLUSIONS-->
+			<meta charset="utf-8">
+			<meta http-equiv="Pragma" content="no-cache">
+			<meta http-equiv="no-cache">
+			<meta http-equiv="Expires" content="-1">
+			<meta http-equiv="Cache-Control" content="no-cache">
+			<!--end no cache headers-->
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta name="description" content="Government College Of Engineering, Amravati brings to you Zenith, the Annual Event of this college. Get ready to be thrilled by this terrrific event."/>
+
+		<!--MTA INCLUSIONS ENDS-->
+		<!--CSS-->
+			<link rel="stylesheet" href="css/style.css"/>
+			<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+			<link rel="stylesheet" href="css/we.css">
+			<link rel="stylesheet" href="css/fo.css">
+			<link rel="stylesheet" href="css/cont.html">
+			<link rel="stylesheet" href="css/abt.css">
+			<link rel="stylesheet" href="css/jpreloader.css"/>
+			<link rel="stylesheet" href="css/jquery.countdown.css">
+			<link rel="icon" type="image/ico" href="favicon.html">
+
+		<!--CSS ENDS-->
+		<!--JS Inclusion-->
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/ThreeCanvas.js"></script>
+		<script type="text/javascript" src="js/Snow.js"></script>
+		<script src="js/jquery.plugin.js"></script>
+		<script src="js/jquery.countdown.js"></script>
+		<script src="js/we.js"></script>
+		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="js/fo.html"></script>
+		<script src="js/con_.html"></script>
+		<script src="js/jpreloader.js"></script>
+		<script src="js/home.js"></script>
+		<!--JS Included-->
+		<title>Zenith '15 - Government College of Engineering Amravati</title>
+	</head>
+	<style type="text/css">
+			body {
+				
+				background: url(img/bg.jpg);
+				background-size: cover;
+				margin: 0px;
+				overflow: hidden;
+			}
+			
+			#jSplash section {
+				width:1000px;
+			}
+			#jSplash h3 {
+				text-align: center;
+				width: 380px;
+				float: right;
+				font-size: 1.4em;
+			}
+			#jSplash h1 {
+				text-align: left;
+				font-size: 2em;
+				text-transform: uppercase;
+				letter-spacing: 3px;
+				margin-left:130px;
+			}
+			#bgContainer {
+				position:absolute;
+				top:0px;
+				left:0px;
+				width:100%;
+				height:100%;
+				z-index:-5;
+			}
+			
+			#defaultCountdown { width: 240px; height: 45px; }
+			
+		</style>
+
+	<body onload="init()">
+	<section id="jSplash" class="center" src="css/jpreloader.css">
+		<div >
+			<div id="loader-sun-locker" style="-webkit-transform:rotate(0deg);transform:rotate(0deg);">
+				<div id="sun">
+					<div id="sunback"></div>
+					<div id="sunfront"></div>
+					<div id='shade'></div>
+				</div>
+			</div>
+		</div>
+		<section class="selected">
+			<h1>ZENITH'15</h1><br/><br/><br/><br/><br/><br/><br/>
+			<h3>GCOEA's Cultural Festival</h3>
+		</section>
+		<section>
+			<h1>Come and refresh yourself</h1><br/><br/><br/><br/><br/><br/><br/>
+			<h3>Annual Function</h3>
+		</section>
+	</section>
+	
+	<!--SNOW INCLUSION-->
+
+	
+		<script>
+
+			var SCREEN_WIDTH = window.innerWidth;
+			var SCREEN_HEIGHT = window.innerHeight;
+
+			var container;
+
+			var particle;
+
+			var camera;
+			var scene;
+			var renderer;
+
+			var mouseX = 0;
+			var mouseY = 0;
+
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+			
+			var particles = []; 
+			var particleImage = new Image();//THREE.ImageUtils.loadTexture( "img/ParticleSmoke.png" );
+			particleImage.src = 'img/ParticleSmoke.png'; 
+
+		
+		
+			function init() {
+
+				container = document.createElement('div');
+				document.body.appendChild(container);
+
+				camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+				camera.position.z = 1000;
+
+				scene = new THREE.Scene();
+				scene.add(camera);
+					
+				renderer = new THREE.CanvasRenderer();
+				renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+				var material = new THREE.ParticleBasicMaterial( { map: new THREE.Texture(particleImage) } );
+					
+				for (var i = 0; i < 500; i++) {
+
+					particle = new Particle3D( material);
+					particle.position.x = Math.random() * 2000 - 1000;
+					particle.position.y = Math.random() * 2000 - 1000;
+					particle.position.z = Math.random() * 2000 - 1000;
+					particle.scale.x = particle.scale.y =  1;
+					scene.add( particle );
+					
+					particles.push(particle); 
+				}
+
+				container.appendChild( renderer.domElement );
+
+	
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+				
+				setInterval( loop, 1000 / 60 );
+				
+			}
+			
+			function onDocumentMouseMove( event ) {
+
+				mouseX = event.clientX - windowHalfX;
+				mouseY = event.clientY - windowHalfY;
+			}
+
+			function onDocumentTouchStart( event ) {
+
+				if ( event.touches.length == 1 ) {
+
+					event.preventDefault();
+
+					mouseX = event.touches[ 0 ].pageX - windowHalfX;
+					mouseY = event.touches[ 0 ].pageY - windowHalfY;
+				}
+			}
+
+			function onDocumentTouchMove( event ) {
+
+				if ( event.touches.length == 1 ) {
+
+					event.preventDefault();
+
+					mouseX = event.touches[ 0 ].pageX - windowHalfX;
+					mouseY = event.touches[ 0 ].pageY - windowHalfY;
+				}
+			}
+
+			//
+
+			function loop() {
+
+			for(var i = 0; i<particles.length; i++)
+				{
+
+					var particle = particles[i]; 
+					particle.updatePhysics(); 
+	
+					with(particle.position)
+					{
+						if(y<-1000) y+=2000; 
+						if(x>1000) x-=2000; 
+						else if(x<-1000) x+=2000; 
+						if(z>1000) z-=2000; 
+						else if(z<-1000) z+=2000; 
+					}				
+				}
+			
+				camera.position.x += ( mouseX - camera.position.x ) * 0.05;
+				camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+				camera.lookAt(scene.position); 
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+	<!--SNOW INCLUDED-->
+		<!--Social-->
+		<div class="social">
+			<div class="fbl"></div>
+				<div class="twl"></div>
+				<div class="fblo"><a href="http://www.facebook.com/Zenith.GCOEAmt"><img src="img/fb.png" height="30px"></a></div>
+				<div class="twlo"><img src="img/mi.png" height="60px"></div>
+		</div>
+		<!--Social ends-->
+		<div class="box">
+		<div class="bg"></div>
+			<p class="clo"><a href="#"><img src="img/close.png" height="30px"></a></p>
+		<div class="ash"></div>
+		</div>
+		<div class="eve"></div>
+		<!--Timer-->
+		<div class="timer">
+			<div id="defaultCountdown"></div>
+		</div>
+		<!--HEADER-->
+		<div id="w_header">
+			<div id="header" class="center">
+			<img style="position:relative;left:950px;" src="img/clg.png" width="400px" height="70px">
+		
+			</div>
+		</div>
+		<!--HEADER ENDS-->
+		
+		
+		<!--GCOEA GYMKHANA-->
+		<div id="w_khana">
+		
+			<div id="khana" class="center">
+					<img style="margin-left:200px;" src="img/pcr.png" height="130px">
+			</div>
+			
+		</div>
+		<!--GCOEA GYMKHANA ENDS-->
+		
+		
+		<!--XENITH NAME-->
+		<div id="w_name">
+			<div id="name" class="center">
+				<img src="img/zenith.png" width="800px">
+			</div>
+		</div>
+		<!--XENITH NAME ENDS-->
+	
+		
+		<!---NAVIGATION HOME-->
+		<div id="w_nav" class="center">
+			<div id="nav" class="center">
+				
+				<ul id="navigation">
+					<li><a href="#" id="mus"><p>MUSIC</p></a></li>
+					<li><a href="#" id="dra"><p>DRAMA</p></a></li>
+					<li><a href="#" id="tro"><p>POND</p></a></li>
+					<li><a href="#" id="aur"><p>AURA</p></a></li>
+					<li><a href="#" id="per"><p>PERSONA</p></a></li>
+					<li><a href="#" id="dan"><p>DANCE</p></a></li>				
+				</ul>
+			
+			</div>
+		</div>
+		<!--NAVIGATION NAME ENDS ENDS-->
+		
+		
+		
+		<!--BARS NAME-->
+		<div id="w_bar">
+			<!-- BArs -->
+<div id="cont">
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+<div id="ind" style="background:#890687"></div>
+<div id="ind" style="background:#dec704"></div>
+<div id="ind" style="background:#e28307"></div>
+<div id="ind" style="background:#338788"></div>
+<div id="ind" style="background:#1c980f"></div>
+<div id="ind" style="background:#113d8f"></div>
+<div id="ind" style="background:#c80b0b"></div>
+</div>
+<!-- bar ends -->
+		</div>
+		<!--BARS NAME ENDS-->
+	
+		
+		<!--FOOTER NAME-->
+		<div id="w_footer">
+			<div id="footer" class="center">
+					<a href="#" id="home">Home</a>
+					<a href="#" id="gala">Gallery</a>
+					<a href="#" id="team">Team</a>
+					<a href="#" id="about" >About US</a>
+					<a href="#" id="contact" >Contact</a>
+					<div id="counter"><!-- hitwebcounter Code START -->
+<a href="#" target="_blank">
+<img src="http://hitwebcounter.com/counter/counter.php?page=5952406&amp;style=0001&amp;nbdigits=5&amp;type=page&amp;initCount=0" title="Tracking hits" Alt="Tracking hits"   border="0" >
+</a><br/>
+<!-- hitwebcounter.com --><a href="#" title="Web Counter" 
+target="_blank" style="font-family: Arial, Helvetica, sans-serif; 
+font-size: 10px; color: #6E6A68; text-decoration: none ;"><em>Web Counter</em>
+</a>   
+  </div>
+			</div>
+		</div>
+		<!--FOOTER ENDS-->
+	
+	</body>
+	<script>
+$(function () {
+	var austDay = new Date();
+	austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+	$('#defaultCountdown').countdown({until: austDay});
+	$('#year').text(austDay.getFullYear());
+});
+</script>
+
+<!-- Mirrored from gcoea.ac.in/zenith/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 19 Feb 2016 08:47:21 GMT -->
+</html>
